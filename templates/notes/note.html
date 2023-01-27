@@ -1,0 +1,38 @@
+{% if show %}
+confidential data!!!!!!!!!!!show------------------------------------------------------------------------------------
+<br>
+<hr>
+<form method="post" action="/updt">
+    {% csrf_token %}
+<input type='text' name='id2' value="{{nid}}" style="display:none;" Readonly>
+<textarea style="width: 900px; height: 400px;" name='txtar'> {{dta.usrtxt}} </textarea>
+<button type="submit">update</button>
+</form>
+<hr>
+
+{% else %}
+<br>
+{% if pres %}
+Login-----------------------------------------------------------------------------------------------------------------
+<br>
+<form action="/note/{{nid}}/" method="post">
+    {% csrf_token %}
+<input type='password' name='passw'>
+<button type="submit">Login</button>
+</form>
+{% else %}
+
+Create new note------------------------------------------------------------------------------------------------------
+<br>
+<form action="/create" method="post">
+    {% csrf_token %}
+<input type='text' name='id' value="{{nid}}" style="display:none;" Readonly>
+<br>
+<input type='password' name='pass1'>
+<br>
+<input type='password' name='pass2'>
+
+<button type="submit">Create</button>
+</form>
+{% endif %}
+{% endif %}
